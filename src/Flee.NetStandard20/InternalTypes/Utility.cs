@@ -322,6 +322,7 @@ namespace Flee.InternalTypes
         public static int GetILGeneratorLength(ILGenerator ilg)
         {
             System.Reflection.FieldInfo fi = typeof(ILGenerator).GetField("m_length", BindingFlags.Instance | BindingFlags.NonPublic);
+            if (fi == null) return ilg.ILOffset;
             return (int)fi.GetValue(ilg);
         }
 
